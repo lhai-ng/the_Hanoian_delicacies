@@ -1,0 +1,273 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* Variables */
+:root {
+  /* Colors */
+  --primary: #FFCB38;
+  --secondary: #3E1421;
+  --tertiary: #FFECB7;
+  --accent: #C80102;
+  --white: #FFFFFF;
+  --lightgray: #DEDDDC;
+  --black: #0E0E0C;
+
+  /* Typography — base font */
+  --ff: 'PP Neue Montreal', -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --ff-serif: 'Beautique Display', Georgia, 'Times New Roman', Times, serif;
+
+  /* Typography tokens — Desktop (-d) */
+  --small-para-d: 400 .75rem/1.5 var(--ff);
+  --para-d: 400 1rem/1.5 var(--ff);
+  --h1-d: 500 5.625rem/1.5 var(--ff);
+  --h2-d: 500 4.1875rem/1.5 var(--ff);
+  --h3-d: 400 3.1875rem/1.5 var(--ff);
+  --h4-d: 500 2.375rem/1.5 var(--ff);
+  --h5-d: 500 1.75rem/1.5 var(--ff);
+  --h6-d: 400 1.3125rem/1.5 var(--ff);
+
+  /* Typography tokens — Desktop Serif (-d-serif) */
+  --para-d-serif: 400 .9375rem/1.5 var(--ff-serif);
+  --h1-d-serif: 400 italic 5.25rem/1.5 var(--ff-serif);
+  --h3-d-serif: 400 italic 3.0625rem/1.5 var(--ff-serif);
+  --h6-d-serif: 400 italic 1.25rem/1.5 var(--ff-serif);
+
+  /* Typography tokens — Tablet (-t) */
+  --small-para-t: 400 .8125rem/1.5 var(--ff);
+  --para-t: 400 1rem/1.5 var(--ff);
+  --h1-t: 700 4.5rem/1.5 var(--ff);
+  --h2-t: 500 3.0625rem/1.5 var(--ff);
+  --h3-t: 400 2.4375rem/1.5 var(--ff);
+  --h4-t: 500 1.9375rem/1.5 var(--ff);
+  --h5-t: 500 1.5625rem/1.5 var(--ff);
+  --h6-t: 400 1.25rem/1.5 var(--ff);
+
+  /* Typography tokens — Tablet Serif (-t-serif) */
+  --para-t-serif: 400 .9375rem/1.5 var(--ff-serif);
+  --h1-t-serif: 400 italic 3.5625rem/1.5 var(--ff-serif);
+  --h3-t-serif: 400 italic 2.3125rem/1.5 var(--ff-serif);
+  --h6-t-serif: 400 italic 1.1875rem/1.5 var(--ff-serif);
+
+  /* Typography tokens — Mobile (-m) */
+  --small-para-m: 400 .6875rem/1.5 var(--ff);
+  --para-m: 400 .8125rem/1.5 var(--ff);
+  --h1-m: 500 2.4375rem/1.5 var(--ff);
+  --h2-m: 500 2rem/1.5 var(--ff);
+  --h3-m: 400 1.6875rem/1.5 var(--ff);
+  --h4-m: 500 1.375rem/1.5 var(--ff);
+  --h5-m: 500 1.1875rem/1.5 var(--ff);
+  --h6-m: 400 1rem/1.5 var(--ff);
+
+  /* Typography tokens — Mobile Serif (-m-serif) */
+  --para-m-serif: 400 .8125rem/1.5 var(--ff-serif);
+  --h1-m-serif: 400 italic 2.3125rem/1.5 var(--ff-serif);
+  --h3-m-serif: 400 italic 1.625rem/1.5 var(--ff-serif);
+  --h6-m-serif: 400 italic 1rem/1.5 var(--ff-serif);
+}
+
+/* Global Styles */
+h1, .h1 {
+    font: var(--h1-d);
+}
+h2, .h2 {
+    font: var(--h2-d);
+}
+h3, .h3 {
+    font: var(--h3-d);
+}
+h4, .h4 {
+    font: var(--h4-d);
+}
+h5, .h5 {
+    font: var(--h5-d);
+}
+h6, .h6 {
+    font: var(--h6-d);
+}
+p, .p {
+    font: var(--para-d);
+}
+.small-p {
+    font: var(--small-para-d);
+}
+
+.btn, button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE10+/Edge */
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: -50vw;
+    width: 200vw;
+    height: 120vh;
+    border-bottom-left-radius: 45%;
+    border-bottom-right-radius: 45%;
+    background-color: var(--black);
+    z-index: 3;
+}
+
+#preloader h6 {
+    position: absolute;
+    top: calc((100vh - 24px) / 2);
+    left: calc((200vw - 96px) / 2);
+    font: var(--h6-d-serif);
+    text-align: center;
+    color: var(--white);
+    width: 96px;
+    height: 24px;
+    opacity: 0;
+}
+
+/* Hero Section */
+#hero {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 640px;
+    background: var(--tertiary);
+}
+
+#hero .img-one {
+    position: absolute;
+    top: 0;
+    left: min(5vw, 64px);
+}
+
+#hero .img-two {
+    position: absolute;
+    top: 270px;
+    left: min(26vw, 384px);
+}
+
+#hero .img-three {
+    position: absolute;
+    top: 237px;
+    left: 782px;
+}
+
+#hero .img-four {
+    position: absolute;
+    top: 0px;
+    left: 856px;
+}
+
+#hero .display {
+    position: absolute;
+    top: 96px;
+    left: calc((100vw - 1354px) / 2);
+    width: 1354px;
+    height: 156px;
+    font-family: 'PP Neue Montreal', sans-serif;
+    font-size: 128px;
+    font-weight: 200;
+    line-height: 0%;
+    color: var(--black);
+}
+
+#hero .display span {
+    font: var(--h1-d-serif);
+    font-size: 128px;
+    font-weight: normal;
+    color: var(--black);
+}
+
+#hero h6 {
+    position: absolute;
+    top: 334px;
+    left: 309px;
+}
+
+#hero p {
+    position: absolute;
+    top: 396px;
+    left: 739px;
+    width: 381px;
+}
+
+#hero .text {
+    overflow: hidden;
+}
+
+#hero .split-line {
+    overflow: hidden;
+}
+
+#hero .split-parent {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* TABLET RESPONSIVE */
+@media (max-width: 1024px) {
+  h1, .h1 {
+    font: var(--h1-t);
+  }
+  h2, .h2 {
+      font: var(--h2-t);
+  }
+  h3, .h3 {
+      font: var(--h3-t);
+  }
+  h4, .h4 {
+      font: var(--h4-t);
+  }
+  h5, .h5 {
+      font: var(--h5-t);
+  }
+  h6, .h6 {
+      font: var(--h6-t);
+  }
+  p, .p {
+      font: var(--para-t);
+  }
+  .small-p {
+      font: var(--small-para-t);
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 640px) {
+  h1, .h1 {
+    font: var(--h1-m);
+  }
+  h2, .h2 {
+      font: var(--h2-m);
+  }
+  h3, .h3 {
+      font: var(--h3-m);
+  }
+  h4, .h4 {
+      font: var(--h4-m);
+  }
+  h5, .h5 {
+      font: var(--h5-m);
+  }
+  h6, .h6 {
+      font: var(--h6-m);
+  }
+  p, .p {
+      font: var(--para-m);
+  }
+  .small-p {
+      font: var(--small-para-m);
+  }
+}
