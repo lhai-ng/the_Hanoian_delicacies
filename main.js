@@ -20,6 +20,7 @@ const texts = document.querySelectorAll(".text");
 const heroImages = document.querySelectorAll("#hero img");
 const hero = document.querySelector("#hero");
 
+
 const historyH2s = document.querySelectorAll("#history h2");
 const historyPs = document.querySelectorAll("#history p");
 const historyH6s = document.querySelectorAll("#history h6");
@@ -337,8 +338,24 @@ const movePreview = () => {
 };
 movePreview();
 
+const toHistory = document.querySelector(".to-history");
+const toMenu = document.querySelector(".to-menu");
 
+function sectionDirection(top) {
+  window.scrollTo({
+    top: top,
+    left: 0,
+    behavior: "smooth"
+  })
+}
 
+toHistory.onclick = () => {
+  sectionDirection(1200);
+}
+
+toMenu.onclick = () => {
+  sectionDirection(3200);
+}
 
  
 
