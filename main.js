@@ -20,6 +20,11 @@ const texts = document.querySelectorAll(".text");
 const heroImages = document.querySelectorAll("#hero img");
 const hero = document.querySelector("#hero");
 
+const historyH2s = document.querySelectorAll("#history h2");
+const historyPs = document.querySelectorAll("#history p");
+const historyH6s = document.querySelectorAll("#history h6");
+const historyImgs = document.querySelectorAll("#history img");
+
 const audioSwitch = document.querySelector(".audio-switch");
 const soundOn = document.querySelector(".sound-on");
 const soundOff = document.querySelector(".sound-off");
@@ -67,7 +72,6 @@ audioSwitch.onclick = () => {
   isPlaying = !isPlaying;
 }
 
-
 const tl1 = gsap.timeline();
 anchorsPreloader.forEach((anchor, index) => {
   const delay = index === 0 ? .5 : 0;
@@ -99,6 +103,10 @@ tl1.to(preloader, {
   ease: "expo.inOut",
   onStart: () => {
     playAudio(false);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+    });
   }
 },"<");
 
@@ -114,7 +122,7 @@ tl1.set(document.documentElement, {
 }, "<");
 
 function setupSplits(
-  elements, 
+  elements,
   duration, 
   ease, 
   yPercent, 
@@ -140,7 +148,7 @@ function setupSplits(
       stagger: stagger,
       delay: delay,
     }, "<")
-  })
+  });
 }
 
 setupSplits(display, 1.75, "sine.out", 100, .1);
@@ -163,14 +171,176 @@ tl1.to(hero, {
   scrollTrigger: {
     trigger: hero,
     start: 'top 0%',
-    end: 'bottom 5%',
+    end: '70% 0%',
     scrub: true,
   },
   top: "-640px",
   ease: "power2.out"
 }, "<");
 
+gsap.to(document.body, {
+  scrollTrigger: {
+    trigger: document.body,
+    start: "740px 30%",
+    end: "1600px 20%",
+    scrub: true,
+  },
+  background: "#3E1421",
+  ease: "expo.out",
+});
 
+gsap.to(document.body, {
+  scrollTrigger: {
+    trigger: document.body,
+    start: "3100px 30%",
+    end: "3300px 5%",
+    scrub: true,
+    onEnter: () => {
+      document.body.style.background = "#3E1421";
+    }
+  },
+  background: "#FFECB7",
+  ease: "expo.out(5)",
+  immediateRender: false,
+});
+
+function setupScrollTriggerText(elements) {
+  elements.forEach((element) => {
+    element.split = new SplitText(element, {
+      type: "lines, words, chars",
+      linesClass: "split-line"
+    })
+
+    document.querySelectorAll(".split-line").forEach(el => {
+      const wrapper = Object.assign(document.createElement("div"), { className: "split-parent" });
+      el.replaceWith(wrapper);
+      wrapper.appendChild(el);
+    });
+
+    element.anim = tl1.from(element.split.lines, {
+      scrollTrigger: {
+        trigger: element.split.lines,
+        start: "top 90%",
+        end: "bottom 30%",
+        scrub: true,
+        once: true,
+      },
+      ease: "power2.out",
+      yPercent: 100,
+      stagger: .1,
+      duration: 1,
+    }, "<")
+  });
+}
+
+setupScrollTriggerText(historyH2s);
+setupScrollTriggerText(historyPs);
+setupScrollTriggerText(historyH6s);
+
+historyImgs.forEach((img, index) => {
+  const wrapper = document.createElement('div');
+  wrapper.className = `history-img wrapper-${index+1}`;
+  img.parentElement.insertBefore(wrapper, img);
+  const vpPercent = ["30%", "15%", "45%", "10%"]
+  
+  gsap.to(wrapper, {
+      scrollTrigger: {
+        trigger: wrapper,
+        start: "top 100%",
+        end: `bottom ${vpPercent[index]}`,
+        scrub: true,
+        onUpdate: () => {
+          let color = document.body.style.background;
+          wrapper.style.background = color;
+        },
+      },
+      ease: "expo.out",
+      xPercent: 100,
+      stagger: .1,
+      duration: 1,
+    }, "<")
+});
+
+// Menu animation
+const contents = document.querySelector(".menu-content");
+const preview = document.querySelector(".preview");
+const previewImg = document.querySelector(".preview-image");
+const nextIcons = document.querySelectorAll(".next-icon");
+
+const bgPositions = [
+  "0 0%", "0 7.14%", "0 14.29%", "0 21.43%", "0 28.57%", "0 35.71%",
+  "0 42.86%", "0 50.01%", "0 57.14%", "0 64.29%", "0 71.43%", "0 78.57%",
+  "0 85.71%", "0 92.86%", "0 100%",
+];
+
+// Hiện / ẩn preview
+const displayPreview = () => {
+  contents.addEventListener("mouseenter", () => {
+    gsap.killTweensOf(preview);
+    gsap.to(preview, {
+      scale: 1,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  });
+
+  contents.addEventListener("mouseleave", () => {
+    gsap.killTweensOf(preview);
+    gsap.to(preview, {
+      scale: 0,
+      duration: 0.7,
+      ease: "expo.out"
+    });
+  });
+};
+displayPreview();
+
+// Di chuyển preview + đổi màu item
+const movePreview = () => {
+  const items = Array.from(contents.children);
+
+  items.forEach((content, index) => {
+    let tl; // timeline riêng cho từng phần tử
+
+    content.addEventListener("mouseenter", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Dừng timeline cũ nếu còn đang chạy
+      if (tl) tl.kill();
+
+      tl = gsap.timeline();
+      tl.to(preview, {
+        y: 120 * index,
+        duration: 0.7,
+        ease: "expo.out"
+      })
+      .to(previewImg, {
+        backgroundPosition: bgPositions[index] || "0 0%",
+        duration: 0.5
+      }, "<")
+      .to(content, {
+        background: "#FFCB38",
+        duration: 0.5
+      }, "<");
+    });
+
+    content.addEventListener("mouseleave", () => {
+      if (tl) tl.kill();
+      gsap.to(content, {
+        background: "#FFECB7",
+        duration: 0.7,
+        ease: "back.out"
+      });
+    });
+  });
+};
+movePreview();
+
+
+
+
+ 
 
 
 
