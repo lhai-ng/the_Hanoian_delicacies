@@ -258,7 +258,7 @@ nav button {
 }
 
 .display {
-    width: 1354px;
+    width: 1356px;
     height: 156px;
     font-family: 'PP Neue Montreal', sans-serif;
     font-size: 128px;
@@ -267,7 +267,7 @@ nav button {
     color: var(--black);
     position: absolute;
     top: 96px;
-    left: calc((100vw - 1354px) / 2);
+    left: calc((100vw - 1356px) / 2);
 }
 
 .display span {
