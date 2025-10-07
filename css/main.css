@@ -258,16 +258,17 @@ nav button {
 }
 
 .display {
-    width: 1356px;
+    width: 100vw;
     height: 156px;
     font-family: 'PP Neue Montreal', sans-serif;
     font-size: 128px;
     font-weight: 200;
+    text-align: center;
     line-height: 0%;
     color: var(--black);
     position: absolute;
     top: 96px;
-    left: calc((100vw - 1356px) / 2);
+    left: 0;
 }
 
 .display span {
