@@ -357,7 +357,49 @@ toMenu.onclick = () => {
   sectionDirection(3200);
 }
 
- 
+// Render Post Animation
+const maskWrapper = document.querySelector(".mask-wrapper");
+const post = document.querySelector("#post");
+const backBtn = document.querySelector(".back");
+const contentPosts = document.querySelectorAll(".menu-content div");
+
+contentPosts.forEach(content => {
+  content.addEventListener("click", () => {
+    gsap.to(maskWrapper, {
+      display: "block",
+      opacity: 1,
+      duration: 1,
+      ease: "power2.out"
+    });
+    gsap.to(post, {
+      top: "64px",
+      duration: 1,
+      ease: "power2.out",
+      delay: .2,
+    });
+  })
+});
+
+const backToMain = () => {
+  gsap.to(post, {
+    top: "100vh",
+    duration: 1,
+    ease: "power2.out"
+  });
+  gsap.to(maskWrapper, {
+    display: "none",
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+    delay: .2
+  });
+}
+backBtn.addEventListener("click", () => {
+  backToMain()
+})
+maskWrapper.addEventListener("click", () => {
+  backToMain();
+})
 
 
 
