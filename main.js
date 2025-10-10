@@ -2,6 +2,7 @@ import gsap from "gsap";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/src/SplitText";
+import { posts } from './posts.js';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -360,11 +361,49 @@ toMenu.onclick = () => {
 // Render Post Animation
 const maskWrapper = document.querySelector(".mask-wrapper");
 const post = document.querySelector("#post");
-const backBtn = document.querySelector(".back");
 const contentPosts = document.querySelectorAll(".menu-content div");
 
-contentPosts.forEach(content => {
+contentPosts.forEach((content, index) => {
   content.addEventListener("click", () => {
+    const selectedPost = posts[index];
+    // Xóa style cũ nếu có
+    const oldStyle = document.getElementById('post-style');
+    if (oldStyle) {
+      oldStyle.remove();
+    }
+    
+    post.innerHTML = '';
+
+    const backBtn = document.createElement('button');
+    backBtn.className = 'back';
+    backBtn.textContent = '← Back';
+    post.appendChild(backBtn);
+    
+    backBtn.addEventListener("click", () => {
+      backToMain();
+    });
+    
+    const postContent = document.createElement('div');
+    postContent.innerHTML = selectedPost.html;
+    post.appendChild(postContent);
+    
+    const style = document.createElement('style');
+    style.id = 'post-style';
+    style.textContent = selectedPost.css;
+    document.head.appendChild(style);
+
+    const scrollY = window.scrollY;
+    
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = "hidden";
+    
+    post.style.overflow = 'scroll';
+    post.style.overflowX = 'hidden';
+    post.style.background = posts[index].background;
+
     gsap.to(maskWrapper, {
       display: "block",
       opacity: 1,
@@ -372,7 +411,7 @@ contentPosts.forEach(content => {
       ease: "power2.out"
     });
     gsap.to(post, {
-      top: "64px",
+      top: "48px",
       duration: 1,
       ease: "power2.out",
       delay: .2,
@@ -381,6 +420,18 @@ contentPosts.forEach(content => {
 });
 
 const backToMain = () => {
+  const scrollY = document.body.style.top;
+
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  document.body.style.overflow = '';
+
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  
+  post.style.overflow = 'hidden';
+  post.style.background = '';
+
   gsap.to(post, {
     top: "100vh",
     duration: 1,
@@ -391,12 +442,14 @@ const backToMain = () => {
     opacity: 0,
     duration: 1,
     ease: "power2.out",
-    delay: .2
+    delay: .2,
   });
+  const postStyle = document.getElementById('post-style');
+  if (postStyle) {
+    postStyle.remove();
+  }
 }
-backBtn.addEventListener("click", () => {
-  backToMain()
-})
+
 maskWrapper.addEventListener("click", () => {
   backToMain();
 })

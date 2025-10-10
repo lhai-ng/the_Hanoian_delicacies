@@ -30,7 +30,8 @@ main {
   --tertiary: #FFECB7;
   --accent: #C80102;
   --white: #FFFFFF;
-  --lightgray: #DEDDDC;
+  --lightgray: #F1F0EE;
+  --gray: #DEDDDC;
   --black: #0E0E0C;
 
   /* Typography — base font */
@@ -44,7 +45,7 @@ main {
   --h2-d: 500 4.1875rem/1.5 var(--ff);
   --h3-d: 400 3.1875rem/1.5 var(--ff);
   --h4-d: 500 2.375rem/1.5 var(--ff);
-  --h5-d: 500 1.75rem/1.5 var(--ff);
+  --h5-d: 400 1.75rem/1.5 var(--ff);
   --h6-d: 400 1.3125rem/1.5 var(--ff);
 
   /* Typography tokens — Desktop Serif (-d-serif) */
@@ -626,8 +627,16 @@ footer .display {
     width: 100vw;
     height: 100vh;
     opacity: 1;
-    background: var(--tertiary);
+    background: var(--white);
     z-index: 31;
+
+    display: flex;
+    justify-content: center;
+    padding: 200px 0 200px 0;
+
+    overflow-y: auto;
+    overflow-x: hidden; 
+    scroll-behavior: smooth;
 }
 
 .back {
@@ -637,7 +646,106 @@ footer .display {
     mix-blend-mode: difference;
     color: var(--white);
     font: var(--para-d);
-    
+}
+
+.box {
+    width: 320px;
+    height: 320px;
+    position: relative;
+    object-fit: cover;
+}
+
+.two-box-horizontal {
+    position: relative;
+    width: 672px;
+    height: 320px;
+    object-fit: cover;
+}
+
+.two-box-vertical {
+    position: relative;
+    width: 320px;
+    height: 672px;
+    object-fit: cover;
+}
+
+.three-box-horizontal {
+    position: relative;
+    width: 1024px;
+    height: 320px;
+    object-fit: cover;
+}
+
+.two-box-both {
+    position: relative;
+    width: 672px;
+    height: 672px;
+    object-fit: cover;
+}
+
+.primary {
+    background: var(--primary);
+}
+.secondary {
+    background: var(--secondary);
+}
+.tertiary {
+    background: var(--tertiary);
+}
+.accent {
+    background: var(--accent);
+}
+.white {
+    background: var(--white);
+}
+.light-gray {
+    background: var(--lightgray);
+}
+.gray {
+    background: var(--gray);
+}
+.black {
+    background: var(--black);
+}
+
+.white-text {
+    color: var(--white);
+    font-weight: 200;
+}
+.accent-text {
+    color: var(--accent);
+}
+.black-text {
+    color: var(--black);
+}
+.primary-text {
+    color: var(--primary);
+}
+
+.main-content {
+    position: relative;
+    width: 1024px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.main-content h6,
+.main-content p {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    margin: 0;
+    max-width: 80%;
+}
+.main-content h6 span {
+    font: var(--h6-d-serif);
+}
+.main-content p span {
+    font: var(--para-d-serif);
+}
+.z-index {
+    z-index: 2;
 }
 /* TABLET RESPONSIVE */
 @media (max-width: 1024px) {
