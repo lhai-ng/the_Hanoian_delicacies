@@ -631,7 +631,7 @@ footer .display {
     z-index: 51;
 
     display: block;
-    padding: 200px 0 0 0;
+    padding: 128px 0 0 0;
 
     overflow-y: auto !important;
     overflow-x: hidden !important; 
