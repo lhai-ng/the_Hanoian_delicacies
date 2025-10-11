@@ -1,3 +1,5 @@
+import './preload-assets.js';
+
 import gsap from "gsap";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
