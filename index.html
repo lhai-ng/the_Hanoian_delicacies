@@ -7,6 +7,26 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="stylesheet" href="fonts/fonts.css">
     <link rel="stylesheet" href="css/main.css">
+    <!-- PRELOAD CRITICAL ASSETS -->
+    <!-- Fonts -->
+    <link rel="preload" href="fonts/fonts.css" as="style">
+    
+    <!-- Critical Images for Hero Section -->
+    <link rel="preload" href="/tile1.png" as="image">
+    <link rel="preload" href="/tile2.png" as="image">
+    <link rel="preload" href="/tile3.png" as="image">
+    <link rel="preload" href="/tile4.png" as="image">
+    
+    <!-- Critical Videos -->
+    <link rel="preload" href="/hero-video1.mp4" as="video">
+    <link rel="preload" href="/hero-video2.mp4" as="video">
+    <link rel="preload" href="/hero-video3.mp4" as="video">
+    
+    <!-- Background Music -->
+    <link rel="preload" href="/background-music.mp3" as="audio">
+    
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header>
@@ -179,6 +199,7 @@
         </div>
     </footer>
     <script type="module" src="posts.js"></script>
+    <script type="module" src="preload-assets.js"></script>
     <script type="module" src="main.js"></script>
 </body>
 </html>
