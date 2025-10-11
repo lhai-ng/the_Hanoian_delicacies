@@ -432,8 +432,8 @@ const posts = [
             }
             .no-bg-4 {
                 position: absolute;
-                bottom: -160px;
-                right: -120px;
+                bottom: 200px;
+                right: -128px;
             }
 
         `,
@@ -618,7 +618,7 @@ const posts = [
 
             .no-bg-2 {
                 position: absolute;
-                bottom: 144px;
+                bottom: 544px;
                 left: -210px;
                 z-index: 3;
             }
@@ -741,7 +741,7 @@ const posts = [
             }
             .no-bg-4 {
                 position: absolute;
-                bottom: 0;
+                bottom: 400px;
                 left: 353px;
             }
         `,
@@ -774,8 +774,8 @@ const posts = [
                 <div class="box tertiary ">
                     <h6>
                         What makes Pho distinctive is not only the richness of the broth but also the harmony between noodles, meat, and herbs, making each bowl a refined composition.
-
                     </h6>
+                    <img class="no-bg-3" src="pho_hn/no background 3.png">
                 </div>
 
                 <div class="combination">
@@ -795,13 +795,11 @@ const posts = [
                             Unlike other noodle soups that may lean toward heaviness, Pho embodies Hanoi’s philosophy of elegance and subtlety in cooking. Beyond being a simple meal, it has become a cultural experience, inviting both locals and travelers to savor the essence of Hanoi’s gastronomy.
                         </p>
                     </div>
-                    
-                    <img  class="no-bg-6" src="pho_hn/no background 6.png">
-                    <img  class="no-bg-2" src="pho_hn/no background 2.png">
-                    <img  class="no-bg-3" src="pho_hn/no background 3.png">
-                    <img  class="no-bg-4" src="pho_hn/no background 4.png">
-                    <img  class="no-bg-5" src="pho_hn/no background 5.png">
                 </div>
+                <img  class="no-bg-6" src="pho_hn/no background 6.png">
+                <img  class="no-bg-2" src="pho_hn/no background 2.png">
+                <img  class="no-bg-4" src="pho_hn/no background 4.png">
+                <img  class="no-bg-5" src="pho_hn/no background 5.png">
             </div>   
         `,
         css: `
@@ -828,8 +826,9 @@ const posts = [
                 justify-content: space-between;
             }
             .hehe h6 {
-                position:static;
-                margin:32px 0 0 32px;
+                position: absolute;
+                top: 72px;
+                left: 32px;
             }
 
             .combination {
@@ -867,16 +866,16 @@ const posts = [
             }
 
             .no-bg-3 {
-                position:absolute; 
-                top: 1162x;
-                left: 543px;
+                position: absolute; 
+                bottom: -128px;
+                right: 0;
                 z-index: 2;
             }
 
             .no-bg-4 {
                 position:absolute; 
-                top: 1443px;
-                left: 156px;
+                top: 1500px;
+                right: -48px;
                 z-index: 2;
             }
 
@@ -1040,7 +1039,7 @@ const posts = [
 
             .no-bg-4 {
                 position:absolute; 
-                bottom: -57px;
+                bottom: 343px;
                 left: -190px;
                 z-index: 2;
             }
@@ -1059,8 +1058,107 @@ const posts = [
     {
         id: 10,
         name: "Kem Tràng Tiền",
-        html: ``,
-        css: ``,
+        html: `
+            <div class="main-content">
+                <div class="two-box-horizontal light gray"></div>
+                <img src="kem_trang_tien/pattern 2.png">
+                <div class="two-box-horizontal white title">
+                    <h1>Kem Tràng Tiền</h1>
+                    <h5>Trang Tien Ice cream</h5>
+                </div>
+                <img src="kem_trang_tien/pattern 1.png">
+                <div class="two-box-horizontal accent">
+                    <h6 class="white-text">
+                        Established in 1958 on Trang Tien Street, near Hoan Kiem Lake, the shop has become an inseparable part of the city’s cultural memory. For many Hanoians, enjoying Trang Tien ice cream is not simply about the sweet treat itself, but about reliving childhood moments and sharing in a tradition that has spanned generations. 
+                    </h6>
+                </div>
+                <div class="box light gray"></div>
+                <img src="kem_trang_tien/pattern 2.png">
+                <img src="kem_trang_tien/image 1.png" class="two-box-horizontal">
+
+                <div class="combination">
+                    <div class="box accent one"> 
+                    </div>
+
+                    <div class="box light gray two">
+                        <p>Standing in front of the shop, holding a stick of ice cream while watching the city’s rhythm unfold, is a simple yet unforgettable Hanoi moment. More than just a dessert, Trang Tien Ice Cream has become a cultural landmark, offering travelers a taste not only of sweetness but also of the everyday life of Hanoi.</p>
+                    </div>
+                    <img src="kem_trang_tien/image 2.png" class="box three">
+                    <img src="kem_trang_tien/pattern 1.png" class="box four">
+
+                    <div class="two-box-vertical accent five">
+                        <h6 class="white-text">The ice cream is known for its simple yet distinctive flavors such as vanilla, green tea, chocolate, mung bean, and coconut. Unlike the creamy, Western-style desserts, Trang Tien ice cream has a light, icy texture that is refreshing in Hanoi’s humid climate. </h6>
+                    </div>
+                </div>
+
+                <img src="kem_trang_tien/image 3.png" class="two-box-horizontal" >
+                <div class="box light gray">
+                    <h6>It is often served on sticks or in cones, making it easy to enjoy while strolling around the bustling streets or by the lakeside.</h6>
+                </div>
+
+                <img  class="no-bg-1" src="kem_trang_tien/no background 1.png">
+                <img  class="no-bg-2" src="kem_trang_tien/no background 2.png">
+                <img  class="no-bg-3" src="kem_trang_tien/no background 3.png">
+                <img  class="no-bg-4" src="kem_trang_tien/no background 4.png">
+            </div>
+        `,
+        css: `
+            .title {
+                position: relative;
+            }
+            .title h1 {
+                position: absolute;
+                font: var(--h1-d-serif);
+                top: 128px;
+            }
+            .title h5 {
+                position: absolute;
+                top: 240px;
+                left: 36px;
+            }
+            .combination {
+            display: grid;
+            grid-template-areas:
+                "one  three  five "
+                "two  four   five";
+            gap: 32px;
+            }
+
+            /* Grid areas */
+            .one   { grid-area: one; }
+            .two   { grid-area: two; }
+            .three { grid-area: three; }
+            .four  { grid-area: four; }
+            .five  { grid-area: five; }
+
+            .no-bg-1 {
+                position:absolute; 
+                top: 0px;
+                left: 0px;
+                z-index: 2;
+            }
+            .no-bg-2 {
+                position:absolute;
+                top: 285px;
+                right: -58px;
+                z-index: 2;
+            }
+
+            .no-bg-3 {
+                position:absolute; 
+                bottom: 1038px;
+                right: 615px;
+                z-index: 2;
+            }
+
+            .no-bg-4 {
+                position:absolute; 
+                bottom: 760px;
+                right: 0px;
+                z-index: 2;
+            }
+
+        `,
         background: "var(--white)"
     },
     {
@@ -1346,7 +1444,7 @@ const posts = [
             }
             .no-bg-4 {
                 position: absolute;
-                bottom: 0;
+                bottom: 400px;
                 left: 0;
             }
         `,
@@ -1483,6 +1581,30 @@ const posts = [
             </div>
         `,
         css: `
+            .title {
+                position: relative;
+            }
+            .title .h1-one {
+                position: absolute;
+                top: 16px;
+                left: 32px;
+                font: var(--h1-d-serif);
+                margin: 0;
+            }
+            .title .h1-two {
+                position: absolute;
+                top: 120px;
+                left: 149px;
+                font: var(--h1-d-serif);
+                margin: 0;
+            }
+            .title h5 {
+                position: absolute;
+                width: 560px;
+                top: 256px;
+                left: 120px;
+                margin: 0;
+            }
             .no-bg-1 {
                 position: absolute;
                 top: 904px;

@@ -366,22 +366,18 @@ const contentPosts = document.querySelectorAll(".menu-content div");
 contentPosts.forEach((content, index) => {
   content.addEventListener("click", () => {
     const selectedPost = posts[index];
-    // Xóa style cũ nếu có
+    
     const oldStyle = document.getElementById('post-style');
     if (oldStyle) {
       oldStyle.remove();
     }
     
     post.innerHTML = '';
-
+    
     const backBtn = document.createElement('button');
     backBtn.className = 'back';
     backBtn.textContent = '← Back';
     post.appendChild(backBtn);
-    
-    backBtn.addEventListener("click", () => {
-      backToMain();
-    });
     
     const postContent = document.createElement('div');
     postContent.innerHTML = selectedPost.html;
@@ -394,65 +390,92 @@ contentPosts.forEach((content, index) => {
 
     const scrollY = window.scrollY;
     
+    // Lock body scroll
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = "hidden";
     
-    post.style.overflow = 'scroll';
+    // Enable post scroll
+    post.style.overflowY = 'auto';
     post.style.overflowX = 'hidden';
     post.style.background = posts[index].background;
 
+    // Animation mở
     gsap.to(maskWrapper, {
       display: "block",
       opacity: 1,
       duration: 1,
       ease: "power2.out"
     });
+    
     gsap.to(post, {
       top: "48px",
       duration: 1,
       ease: "power2.out",
       delay: .2,
+      onComplete: () => {
+        // SAU KHI animation xong mới scroll về top
+        post.scrollTop = 0;
+        // Force enable scroll
+        post.style.pointerEvents = 'auto';
+      }
     });
-  })
+
+    // Add event listener cho back button
+    backBtn.addEventListener("click", () => {
+      const postStyle = document.getElementById('post-style');
+      const scrollY = document.body.style.top;
+
+      // Animation đóng trước
+      gsap.to(post, {
+        top: "100vh",
+        duration: 1,
+        ease: "power2.out"
+      });
+      
+      gsap.to(maskWrapper, {
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+        delay: .2,
+        onComplete: () => {
+          if (postStyle) {
+            postStyle.remove();
+          }
+          
+          maskWrapper.style.display = "none";
+          
+          // Unlock body scroll
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
+          document.body.style.overflow = '';
+          document.documentElement.style.overflow = '';
+          
+          // Restore scroll position
+          window.scrollTo(0, parseInt(scrollY || '0') * -1);
+          
+          // Reset post
+          post.style.overflowY = 'hidden';
+          post.style.background = '';
+          post.style.pointerEvents = 'none';
+          
+        }
+      });
+    });
+  });
 });
 
-const backToMain = () => {
-  const scrollY = document.body.style.top;
-
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.width = '';
-  document.body.style.overflow = '';
-
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
-  
-  post.style.overflow = 'hidden';
-  post.style.background = '';
-
-  gsap.to(post, {
-    top: "100vh",
-    duration: 1,
-    ease: "power2.out"
-  });
-  gsap.to(maskWrapper, {
-    display: "none",
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-    delay: .2,
-  });
-  const postStyle = document.getElementById('post-style');
-  if (postStyle) {
-    postStyle.remove();
-  }
-}
-
+// Event listener cho mask wrapper
 maskWrapper.addEventListener("click", () => {
-  backToMain();
-})
+  // Trigger click vào back button để tái sử dụng logic
+  const backBtn = document.querySelector("#post .back");
+  if (backBtn) {
+    backBtn.click();
+  }
+});
 
 
 

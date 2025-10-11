@@ -617,7 +617,7 @@ footer .display {
     display: none;
     opacity: 0;
     background: hsla(60, 8%, 5%, .7);
-    z-index: 30;
+    z-index: 40;
 }
 
 #post {
@@ -628,11 +628,12 @@ footer .display {
     height: 100vh;
     opacity: 1;
     background: var(--white);
-    z-index: 31;
+    z-index: 51;
 
     display: flex;
     justify-content: center;
-    padding: 200px 0 200px 0;
+    align-items: flex-start; /* Thêm dòng này */
+    padding: 200px 0 0 0;
 
     overflow-y: auto;
     overflow-x: hidden; 
@@ -641,7 +642,7 @@ footer .display {
 
 .back {
     position: absolute;
-    top: 48px;
+    top: 72px;
     left: 64px;
     mix-blend-mode: difference;
     color: var(--white);
@@ -728,6 +729,7 @@ footer .display {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+    padding-bottom: 400px;
 }
 
 .main-content h6,
