@@ -635,9 +635,8 @@ footer .display {
     align-items: flex-start; /* Thêm dòng này */
     padding: 200px 0 0 0;
 
-    overflow-y: auto;
-    overflow-x: hidden; 
-    scroll-behavior: smooth;
+    overflow-y: auto !important;
+    overflow-x: hidden !important; 
 }
 
 .back {

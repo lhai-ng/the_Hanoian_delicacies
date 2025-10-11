@@ -367,6 +367,9 @@ contentPosts.forEach((content, index) => {
   content.addEventListener("click", () => {
     const selectedPost = posts[index];
     
+    // DISABLE LENIS NGAY LẬP TỨC
+    lenis.stop();
+    
     const oldStyle = document.getElementById('post-style');
     if (oldStyle) {
       oldStyle.remove();
@@ -398,8 +401,10 @@ contentPosts.forEach((content, index) => {
     document.documentElement.style.overflow = "hidden";
     
     // Enable post scroll
-    post.style.overflowY = 'auto';
+    post.style.position = 'fixed';
+    post.style.overflowY = 'scroll';
     post.style.overflowX = 'hidden';
+    post.style.pointerEvents = 'auto';
     post.style.background = posts[index].background;
 
     // Animation mở
@@ -416,10 +421,10 @@ contentPosts.forEach((content, index) => {
       ease: "power2.out",
       delay: .2,
       onComplete: () => {
-        // SAU KHI animation xong mới scroll về top
-        post.scrollTop = 0;
-        // Force enable scroll
-        post.style.pointerEvents = 'auto';
+        // Reset scroll position
+        setTimeout(() => {
+          post.scrollTop = 0;
+        }, 50);
       }
     });
 
@@ -428,7 +433,7 @@ contentPosts.forEach((content, index) => {
       const postStyle = document.getElementById('post-style');
       const scrollY = document.body.style.top;
 
-      // Animation đóng trước
+      // Animation đóng
       gsap.to(post, {
         top: "100vh",
         duration: 1,
@@ -460,8 +465,9 @@ contentPosts.forEach((content, index) => {
           // Reset post
           post.style.overflowY = 'hidden';
           post.style.background = '';
-          post.style.pointerEvents = 'none';
           
+          // BẬT LẠI LENIS
+          lenis.start();
         }
       });
     });
