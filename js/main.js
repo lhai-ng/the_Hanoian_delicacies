@@ -361,11 +361,7 @@ toMenu.onclick = () => {
 
 // Post onclick and onback from post to main
 const links = document.querySelectorAll(".menu-content a");
-links.forEach(link => {
-  link.onclick = () => {
 
-  }
-})
 
 
 
