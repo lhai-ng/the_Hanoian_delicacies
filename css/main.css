@@ -10,7 +10,6 @@
 html, body {
     overflow-x: hidden !important;
     font-size: 16px;
-    height: 6459px;
 }
 
 body {
@@ -487,7 +486,7 @@ nav button {
     width: 800px;
 }
 
-.menu-content div {
+.menu-content a {
     text-decoration: none;
     color: var(--black);
     background: #FFECB7;
@@ -500,7 +499,7 @@ nav button {
     cursor: pointer;
 }
 
-.menu-content div h3 {
+.menu-content a h3 {
     font: var(--h3-d-serif);
     margin-left: 8px;
 }
@@ -608,29 +607,12 @@ footer .display {
     width: 300px;
 }
 
-.mask-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    opacity: 0;
-    background: hsla(60, 8%, 5%, .7);
-    z-index: 40;
-}
-
 #post {
-    position: fixed;
-    top: 100vh;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
     opacity: 1;
-    background: var(--white);
     z-index: 51;
 
-    display: block;
+    display: flex;
+    justify-content: center;
     padding: 128px 0 0 0;
 
     overflow-y: auto !important;
@@ -638,12 +620,13 @@ footer .display {
 }
 
 .back {
-    position: absolute;
+    position: fixed;
     top: 72px;
-    left: 64px;
+    left: 128px;
     mix-blend-mode: difference;
     color: var(--white);
     font: var(--para-d);
+    text-decoration: none;
 }
 
 .box {

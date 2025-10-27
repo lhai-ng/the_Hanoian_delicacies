@@ -2,7 +2,6 @@ import gsap from "gsap";
 import Lenis from "lenis";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitText from "gsap/src/SplitText";
-import { posts } from './posts.js';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -33,6 +32,9 @@ const soundOff = document.querySelector(".sound-off");
 const bars = document.querySelectorAll(".wave-animation .bar");
 const audio = document.querySelector("audio");
 let isPlaying = true;
+
+document.documentElement.style.height = '6459px';
+document.body.style.height = '6459px';
 
 function playAudio(isPlaying) {
   if (isPlaying) {
@@ -267,7 +269,6 @@ historyImgs.forEach((img, index) => {
 const contents = document.querySelector(".menu-content");
 const preview = document.querySelector(".preview");
 const previewImg = document.querySelector(".preview-image");
-const nextIcons = document.querySelectorAll(".next-icon");
 
 const bgPositions = [
   "0 0%", "0 7.14%", "0 14.29%", "0 21.43%", "0 28.57%", "0 35.71%",
@@ -297,18 +298,16 @@ const displayPreview = () => {
 };
 displayPreview();
 
-// Di chuyển preview + đổi màu item
 const movePreview = () => {
   const items = Array.from(contents.children);
 
   items.forEach((content, index) => {
-    let tl; // timeline riêng cho từng phần tử
+    let tl; 
 
     content.addEventListener("mouseenter", (e) => {
       e.preventDefault();
       e.stopPropagation();
 
-      // Dừng timeline cũ nếu còn đang chạy
       if (tl) tl.kill();
 
       tl = gsap.timeline();
@@ -319,11 +318,13 @@ const movePreview = () => {
       })
       .to(previewImg, {
         backgroundPosition: bgPositions[index] || "0 0%",
-        duration: 0.5
+        duration: 0.8,
+        ease: "expo.out(1.9)",
       }, "<")
       .to(content, {
         background: "#FFCB38",
-        duration: 0.5
+        duration: 0.8,
+        ease: "power2.out",
       }, "<");
     });
 
@@ -358,130 +359,16 @@ toMenu.onclick = () => {
   sectionDirection(3200);
 }
 
-// Render Post Animation
-const maskWrapper = document.querySelector(".mask-wrapper");
-const post = document.querySelector("#post");
-const contentPosts = document.querySelectorAll(".menu-content div");
+// Post onclick and onback from post to main
+const links = document.querySelectorAll(".menu-content a");
+links.forEach(link => {
+  link.onclick = () => {
 
-contentPosts.forEach((content, index) => {
-  content.addEventListener("click", () => {
-    const selectedPost = posts[index];
-    
-    // DISABLE LENIS NGAY LẬP TỨC
-    lenis.stop();
-    
-    const oldStyle = document.getElementById('post-style');
-    if (oldStyle) {
-      oldStyle.remove();
-    }
-    
-    post.innerHTML = '';
-    
-    const backBtn = document.createElement('button');
-    backBtn.className = 'back';
-    backBtn.textContent = '← Back';
-    post.appendChild(backBtn);
-    
-    const postContent = document.createElement('div');
-    postContent.innerHTML = selectedPost.html;
-    post.appendChild(postContent);
-    
-    const style = document.createElement('style');
-    style.id = 'post-style';
-    style.textContent = selectedPost.css;
-    document.head.appendChild(style);
-
-    const scrollY = window.scrollY;
-    
-    // Lock body scroll
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = "hidden";
-    
-    // Enable post scroll
-    post.style.position = 'fixed';
-    post.style.overflowY = 'scroll';
-    post.style.overflowX = 'hidden';
-    post.style.pointerEvents = 'auto';
-    post.style.background = posts[index].background;
-
-    // Animation mở
-    gsap.to(maskWrapper, {
-      display: "block",
-      opacity: 1,
-      duration: 1,
-      ease: "power2.out"
-    });
-    
-    gsap.to(post, {
-      top: "48px",
-      duration: 1,
-      ease: "power2.out",
-      delay: .2,
-      onComplete: () => {
-        // Reset scroll position
-        setTimeout(() => {
-          post.scrollTop = 0;
-        }, 50);
-      }
-    });
-
-    // Add event listener cho back button
-    backBtn.addEventListener("click", () => {
-      const postStyle = document.getElementById('post-style');
-      const scrollY = document.body.style.top;
-
-      // Animation đóng
-      gsap.to(post, {
-        top: "100vh",
-        duration: 1,
-        ease: "power2.out"
-      });
-      
-      gsap.to(maskWrapper, {
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        delay: .2,
-        onComplete: () => {
-          if (postStyle) {
-            postStyle.remove();
-          }
-          
-          maskWrapper.style.display = "none";
-          
-          // Unlock body scroll
-          document.body.style.position = '';
-          document.body.style.top = '';
-          document.body.style.width = '';
-          document.body.style.overflow = '';
-          document.documentElement.style.overflow = '';
-          
-          // Restore scroll position
-          window.scrollTo(0, parseInt(scrollY || '0') * -1);
-          
-          // Reset post
-          post.style.overflowY = 'hidden';
-          post.style.background = '';
-          
-          // BẬT LẠI LENIS
-          lenis.start();
-        }
-      });
-    });
-  });
-});
-
-// Event listener cho mask wrapper
-maskWrapper.addEventListener("click", () => {
-  // Trigger click vào back button để tái sử dụng logic
-  const backBtn = document.querySelector("#post .back");
-  if (backBtn) {
-    backBtn.click();
   }
-});
+})
+
+
+
 
 
 
