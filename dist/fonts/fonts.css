@@ -1,0 +1,109 @@
+/* PP Neue Montreal */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal/PPNeueMontreal-Thin.woff2') format('woff2'),
+       url('/fonts/ppneuemontreal/PPNeueMontreal-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal/PPNeueMontreal-Book.woff2') format('woff2'),
+       url('/fonts/ppneuemontreal/PPNeueMontreal-Book.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal/PPNeueMontreal-Italic.woff2') format('woff2'),
+       url('/fonts/ppneuemontreal/PPNeueMontreal-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal/PPNeueMontreal-Medium.woff2') format('woff2'),
+       url('/fonts/ppneuemontreal/PPNeueMontreal-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal/PPNeueMontreal-SemiBolditalic.woff2') format('woff2'),
+       url('/fonts/ppneuemontreal/PPNeueMontreal-SemiBolditalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('/fonts/ppneuemontreal/PPNeueMontreal-Bold.woff2') format('woff2'),
+       url('/fonts/ppneuemontreal/PPNeueMontreal-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Beautique Display */
+@font-face {
+  font-family: 'Beautique Display';
+  src: url('/fonts/beautiquedisplay/BeautiqueDisplay-Light.woff2') format('woff2'),
+       url('/fonts/beautiquedisplay/BeautiqueDisplay-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beautique Display';
+  src: url('/fonts/beautiquedisplay/BeautiqueDisplay-LightItalic.woff2') format('woff2'),
+       url('/fonts/beautiquedisplay/BeautiqueDisplay-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beautique Display';
+  src: url('/fonts/beautiquedisplay/BeautiqueDisplay-Regular.woff2') format('woff2'),
+       url('/fonts/beautiquedisplay/BeautiqueDisplay-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beautique Display';
+  src: url('/fonts/beautiquedisplay/BeautiqueDisplay-Italic.woff2') format('woff2'),
+       url('/fonts/beautiquedisplay/BeautiqueDisplay-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beautique Display';
+  src: url('/fonts/beautiquedisplay/BeautiqueDisplay-Medium.woff2') format('woff2'),
+       url('/fonts/beautiquedisplay/BeautiqueDisplay-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Beautique Display';
+  src: url('/fonts/beautiquedisplay/BeautiqueDisplay-MediumItalic.woff2') format('woff2'),
+       url('/fonts/beautiquedisplay/BeautiqueDisplay-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
