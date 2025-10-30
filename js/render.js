@@ -45,11 +45,48 @@ title.id = "post-title";
 document.head.appendChild(title);
 
 const backBtn = document.createElement("a");
-backBtn.href = "index.html";
 backBtn.textContent = "← Back"
 backBtn.className = "back";
+
+backBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const closingLoader = document.createElement("div");
+    closingLoader.className = "closing-loader";
+    document.body.appendChild(closingLoader);
+    gsap.to(closingLoader, {
+      top: "0",
+      duration: .5,
+      ease: "power1.out",
+      onComplete: () => {
+        window.location.href = `index.html`;
+      }
+    });
+})
+
 postWrapper.appendChild(backBtn);
 
+const openingLoader = document.createElement("div");
+openingLoader.className = "opening-loader";
+const textLoader = document.createElement("h6");
+textLoader.textContent = `${post.name}`;
+textLoader.className = "text-loader";
+openingLoader.appendChild(textLoader);
+document.body.appendChild(openingLoader);
+
+const tl = gsap.timeline();
+tl.to(textLoader, {
+    opacity: 1,
+    duration: .6,
+    ease: "sine.out",
+});
+tl.to(openingLoader, {
+  top: "-100vh",
+  borderRadius: "50%",
+  duration: 1,
+  delay: .25,
+  ease: "power2.out",
+})
 
 
 

@@ -391,6 +391,7 @@ nav button {
     left: 729px;
     width: 375px;
     height: 240px;
+    background: var(--secondary);
 }
 .history-img.wrapper-2,
 .history-2 {
@@ -399,6 +400,7 @@ nav button {
     left: 0;
     width: 417px;
     height: 240px;
+    background: var(--secondary);
 }
 .history-img.wrapper-3,
 .history-3 {
@@ -407,6 +409,7 @@ nav button {
     left: 252px;
     width: 480px;
     height: 240px;
+    background: var(--secondary);
     
 }
 .history-img.wrapper-4,
@@ -416,6 +419,7 @@ nav button {
     left: 758px;
     width: 233px;
     height: 400px;
+    background: var(--secondary);
 }
 
 #history .para-1 {
@@ -627,6 +631,8 @@ footer .display {
     color: var(--white);
     font: var(--para-d);
     text-decoration: none;
+    cursor: pointer;
+    z-index: 49;
 }
 
 .box {
@@ -730,6 +736,38 @@ footer .display {
 .z-index {
     z-index: 2;
 }
+
+.closing-loader,
+.opening-loader {
+    position: fixed;
+    width: 200vw;
+    height: 100vh;
+    background: var(--black);
+    z-index: 50;
+}
+
+.closing-loader {
+    top: 105vh;
+    left: -50vw;
+}
+
+.opening-loader {
+    top: 0;
+    left: -50vw;
+}
+
+.text-loader {
+    position: absolute;
+    top: calc((100vh - 24px) / 2);
+    left: calc((200vw - 256px) / 2);
+    font: var(--h6-d-serif);
+    text-align: center;
+    color: var(--white);
+    width: 256px;
+    height: 24px;
+    opacity: 0;
+}
+
 /* TABLET RESPONSIVE */
 @media (max-width: 1024px) {
   h1, .h1 {

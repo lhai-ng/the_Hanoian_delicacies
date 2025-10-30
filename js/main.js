@@ -36,6 +36,8 @@ let isPlaying = true;
 document.documentElement.style.height = '6459px';
 document.body.style.height = '6459px';
 
+const tl1 = gsap.timeline();
+
 function playAudio(isPlaying) {
   if (isPlaying) {
     soundOn.style.display = "block";
@@ -76,7 +78,7 @@ audioSwitch.onclick = () => {
   isPlaying = !isPlaying;
 }
 
-const tl1 = gsap.timeline();
+// Animation tl1 starts here
 anchorsPreloader.forEach((anchor, index) => {
   const delay = index === 0 ? .5 : 0;
   tl1.set(document.documentElement, {
@@ -171,7 +173,7 @@ heroImages.forEach((img, index) => {
   }, "<");
 });
 
-tl1.to(hero, {
+gsap.to(hero, {
   scrollTrigger: {
     trigger: hero,
     start: 'top 0%',
@@ -180,7 +182,7 @@ tl1.to(hero, {
   },
   top: "-640px",
   ease: "power2.out"
-}, "<");
+});
 
 gsap.to(document.body, {
   scrollTrigger: {
@@ -221,7 +223,7 @@ function setupScrollTriggerText(elements) {
       wrapper.appendChild(el);
     });
 
-    element.anim = tl1.from(element.split.lines, {
+    element.anim = gsap.from(element.split.lines, {
       scrollTrigger: {
         trigger: element.split.lines,
         start: "top 90%",
@@ -233,7 +235,7 @@ function setupScrollTriggerText(elements) {
       yPercent: 100,
       stagger: .1,
       duration: 1,
-    }, "<")
+    })
   });
 }
 
@@ -250,7 +252,7 @@ historyImgs.forEach((img, index) => {
   gsap.to(wrapper, {
       scrollTrigger: {
         trigger: wrapper,
-        start: "top 100%",
+        start: "0% 100%",
         end: `bottom ${vpPercent[index]}`,
         scrub: true,
         onUpdate: () => {
@@ -359,8 +361,75 @@ toMenu.onclick = () => {
   sectionDirection(3200);
 }
 
+// Navigation type checking
+const navEntry = performance.getEntriesByType('navigation')[0];
+const navigationType = navEntry ? navEntry.type : 'navigate';
+const tl2 = gsap.timeline();
+
+const isReload = navigationType === "reload";
+const isBackForward = navigationType === "back-forward";
+const isReturningFromPost = sessionStorage.getItem("fromPost") === 'true';
+const savedScrollPosition = sessionStorage.getItem("scrollPos");
+
+if (!isReload && isReturningFromPost && savedScrollPosition) {
+  preloader.style.display = 'none';
+  document.documentElement.style.paddingRight = "0";
+  document.documentElement.style.overflow = "auto";
+
+  tl1.progress(1);
+
+  const openingLoader = document.createElement("div");
+  openingLoader.className = "opening-loader";
+  const textLoader = document.createElement("h6");
+  textLoader.textContent = "(Menu)";
+  textLoader.className = "text-loader";
+  openingLoader.appendChild(textLoader);
+  document.body.appendChild(openingLoader);
+
+  tl2.to(textLoader, {
+    opacity: 1,
+    duration: .6,
+    ease: "sine.out",
+  });
+  tl2.to(openingLoader, {
+    top: "-100vh",
+    borderRadius: "50%",
+    duration: 1,
+    delay: .25,
+    ease: "power2.out",
+  })
+
+  setTimeout(() => {
+    window.scrollTo(0, parseInt(savedScrollPosition));
+    sessionStorage.removeItem("fromPost");
+    sessionStorage.removeItem("scrollPos")
+  })
+}
+
 // Post onclick and onback from post to main
 const links = document.querySelectorAll(".menu-content a");
+links.forEach((link, index) => {
+  link.addEventListener("click", (e) => {
+    sessionStorage.setItem('scrollPos', window.scrollY.toString());
+    sessionStorage.setItem("fromPost", 'true');
+
+    e.preventDefault;
+
+    const closingLoader = document.createElement("div");
+    closingLoader.className = "closing-loader";
+    document.body.appendChild(closingLoader);
+    gsap.to(closingLoader, {
+      top: "0",
+      duration: .5,
+      ease: "power1.out",
+      onComplete: () => {
+        window.location.href = `post.html?id=${index + 1}`;
+      }
+    });
+  })
+});
+
+
 
 
 
