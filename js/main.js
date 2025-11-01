@@ -187,8 +187,8 @@ gsap.to(hero, {
 gsap.to(document.body, {
   scrollTrigger: {
     trigger: document.body,
-    start: "740px 30%",
-    end: "1600px 20%",
+    start: "1100px 100%",
+    end: "1100px 20%",
     scrub: true,
   },
   background: "#3E1421",
@@ -252,19 +252,19 @@ historyImgs.forEach((img, index) => {
   gsap.to(wrapper, {
       scrollTrigger: {
         trigger: wrapper,
-        start: "0% 100%",
+        start: "top 150%",
         end: `bottom ${vpPercent[index]}`,
         scrub: true,
         onUpdate: () => {
           let color = document.body.style.background;
-          wrapper.style.background = color;
+          wrapper.style.background = color + '!important';
         },
       },
       ease: "expo.out",
       xPercent: 100,
       stagger: .1,
       duration: 1,
-    }, "<")
+  }, "<")
 });
 
 // Menu animation
@@ -371,7 +371,7 @@ const isBackForward = navigationType === "back-forward";
 const isReturningFromPost = sessionStorage.getItem("fromPost") === 'true';
 const savedScrollPosition = sessionStorage.getItem("scrollPos");
 
-if (!isReload && isReturningFromPost && savedScrollPosition) {
+if (!isReload && !isBackForward && isReturningFromPost && savedScrollPosition) {
   preloader.style.display = 'none';
   document.documentElement.style.paddingRight = "0";
   document.documentElement.style.overflow = "auto";
@@ -401,9 +401,10 @@ if (!isReload && isReturningFromPost && savedScrollPosition) {
 
   setTimeout(() => {
     window.scrollTo(0, parseInt(savedScrollPosition));
+    document.body.style.background = "var(tertiary)";
     sessionStorage.removeItem("fromPost");
     sessionStorage.removeItem("scrollPos")
-  })
+  }, 100)
 }
 
 // Post onclick and onback from post to main

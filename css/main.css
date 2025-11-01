@@ -409,7 +409,7 @@ nav button {
     left: 252px;
     width: 480px;
     height: 240px;
-    background: var(--secondary);
+    background: var(--secondary) !important;
     
 }
 .history-img.wrapper-4,
@@ -419,7 +419,7 @@ nav button {
     left: 758px;
     width: 233px;
     height: 400px;
-    background: var(--secondary);
+    background: var(--secondary) !important;
 }
 
 #history .para-1 {
