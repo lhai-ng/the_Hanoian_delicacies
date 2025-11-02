@@ -252,7 +252,7 @@ historyImgs.forEach((img, index) => {
   gsap.to(wrapper, {
       scrollTrigger: {
         trigger: wrapper,
-        start: "top 150%",
+        start: "top 100%",
         end: `bottom ${vpPercent[index]}`,
         scrub: true,
         onUpdate: () => {
@@ -371,7 +371,7 @@ const isBackForward = navigationType === "back-forward";
 const isReturningFromPost = sessionStorage.getItem("fromPost") === 'true';
 const savedScrollPosition = sessionStorage.getItem("scrollPos");
 
-if (!isReload && !isBackForward && isReturningFromPost && savedScrollPosition) {
+if (!isReload && isReturningFromPost && savedScrollPosition) {
   preloader.style.display = 'none';
   document.documentElement.style.paddingRight = "0";
   document.documentElement.style.overflow = "auto";
