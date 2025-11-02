@@ -367,7 +367,7 @@ const navigationType = navEntry ? navEntry.type : 'navigate';
 const tl2 = gsap.timeline();
 
 const isReload = navigationType === "reload";
-const isBackForward = navigationType === "back-forward";
+const isBackForward = navigationType === "back_forward";
 const isReturningFromPost = sessionStorage.getItem("fromPost") === 'true';
 const savedScrollPosition = sessionStorage.getItem("scrollPos");
 
