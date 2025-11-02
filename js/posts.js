@@ -890,7 +890,7 @@ const posts = [
                 left: 360px !important;
             }
         `,
-        background: "var(--black)"
+        background: "#2c2d2d"
     },
     {
         id: 9,
@@ -1649,7 +1649,7 @@ const posts = [
             }
 
         `,
-        background: "var(--black)"
+        background: "#2c2d2d"
     },
 ]
 

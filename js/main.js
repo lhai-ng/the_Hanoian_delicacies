@@ -198,7 +198,7 @@ gsap.to(document.body, {
 gsap.to(document.body, {
   scrollTrigger: {
     trigger: document.body,
-    start: "3100px 30%",
+    start: "3000px 30%",
     end: "3300px 5%",
     scrub: true,
     onEnter: () => {
@@ -375,6 +375,8 @@ if (!isReload && isReturningFromPost && savedScrollPosition) {
   preloader.style.display = 'none';
   document.documentElement.style.paddingRight = "0";
   document.documentElement.style.overflow = "auto";
+
+  console.log('hehe');
 
   tl1.progress(1);
 
