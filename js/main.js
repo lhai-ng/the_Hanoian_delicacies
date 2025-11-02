@@ -371,7 +371,7 @@ const isBackForward = navigationType === "back_forward";
 const isReturningFromPost = sessionStorage.getItem("fromPost") === 'true';
 const savedScrollPosition = sessionStorage.getItem("scrollPos");
 
-if (!isReload && isReturningFromPost && savedScrollPosition) {
+if (!isReload && !isBackForward && isReturningFromPost && savedScrollPosition) {
   preloader.style.display = 'none';
   document.documentElement.style.paddingRight = "0";
   document.documentElement.style.overflow = "auto";
