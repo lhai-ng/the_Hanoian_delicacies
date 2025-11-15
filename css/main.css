@@ -340,7 +340,7 @@ nav button {
 /* History */
 #history {
     position: absolute;
-    top: 1370px;
+    top: 1200px;
     left: calc((100vw - 1104px) / 2);
     width: 1104px;
     color: var(--white);
@@ -465,7 +465,7 @@ nav button {
 /* Menu */
 #menu {
     position: absolute;
-    top: 3483px;
+    top: 3200px;
     left: calc((100vw - 1146px) / 2);
     width: 1146px;
 }
