@@ -33,8 +33,8 @@ const bars = document.querySelectorAll(".wave-animation .bar");
 const audio = document.querySelector("audio");
 let isPlaying = true;
 
-document.documentElement.style.height = '6300px';
-document.body.style.height = '6300px';
+document.documentElement.style.height = '6200px';
+document.body.style.height = '6200px';
 
 const tl1 = gsap.timeline();
 
@@ -187,8 +187,8 @@ gsap.to(hero, {
 gsap.to(document.body, {
   scrollTrigger: {
     trigger: document.body,
-    start: "1100px 100%",
-    end: "1100px 20%",
+    start: "1090px 100%",
+    end: "1090px 50%",
     scrub: true,
   },
   background: "#3E1421",
@@ -198,8 +198,8 @@ gsap.to(document.body, {
 gsap.to(document.body, {
   scrollTrigger: {
     trigger: document.body,
-    start: "2900px 30%",
-    end: "2950px 5%",
+    start: "2950px 40%",
+    end: "2950px 35%",
     scrub: true,
     onEnter: () => {
       document.body.style.background = "#3E1421";

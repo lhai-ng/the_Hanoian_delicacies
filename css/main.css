@@ -465,7 +465,7 @@ nav button {
 /* Menu */
 #menu {
     position: absolute;
-    top: 3200px;
+    top: 3100px;
     left: calc((100vw - 1146px) / 2);
     width: 1146px;
 }
@@ -485,7 +485,7 @@ nav button {
 
 #menu .menu-content {
     position: absolute;
-    top: 346px;
+    top: 280px;
     right: 0;
     width: 800px;
 }
@@ -519,7 +519,7 @@ nav button {
 
 .preview {
     position: absolute;
-    top: 280px;
+    top: 200px;
     left: 26px;
     width: 256px;
     height: 256px;
