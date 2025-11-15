@@ -174,7 +174,45 @@
             </div>
         </div>
     </footer>
+
+    <button id="progress">
+        <div id="inside-content">
+            <p id="inside-content-text"></p>
+        </div>
+    </button>   
     <script type="module" src="js/posts.js"></script>
     <script type="module" src="js/main.js"></script>
+    <script>
+        let progressBtn = document.getElementById('progress');
+        let insideContentText = document.getElementById('inside-content-text');
+
+        // Hàm lấy vị trí thanh cuộn và hiển thị phần đã cuộn
+        const scrollPercentage = () => {
+            // tính toán để lấy vị trí thanh cuộn so với chiều dài của cuộn
+            let pos = document.documentElement.scrollTop;
+            let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollValue = Math.round(pos * 100 / calcHeight);
+
+            // thay đổi background theo gradient hình tròn
+            progressBtn.style.background = `conic-gradient(hsl(0, 0%, 60%) ${scrollValue}%, hsla(0, 0%, 0%, 0) ${scrollValue}%)`;
+
+            // thay đổi text khi cuộn hết và thêm event lướt cuộn lên đầu
+            if (scrollValue >= 100) {
+                insideContentText.textContent = 'Back to Top';
+                progressBtn.onclick = () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                    });
+                }
+            } else {
+                insideContentText.textContent = 'Scroll';
+                progressBtn.onclick = null;
+            }
+        }
+
+        window.onscroll = scrollPercentage;
+        window.onload = scrollPercentage;
+    </script>
 </body>
 </html>

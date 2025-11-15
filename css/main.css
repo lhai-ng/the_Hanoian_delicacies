@@ -768,6 +768,39 @@ footer .display {
     opacity: 0;
 }
 
+#progress {
+    position: fixed;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: none;
+    border-radius: 50%;
+    bottom: 2rem;
+    right: 1.5rem;
+    background: hsl(0, 0%, 55%);
+    box-shadow: 0 0 5px hsla(0, 0%, 5%, .1);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 40;
+}
+
+#inside-content {
+    width: 4.1rem;
+    height: 4.1rem;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+    place-items: center;
+}
+
+#inside-content-text {
+    font-family: 'PP Neue Montreal', sans-serif;
+    font-size: .75rem;
+    letter-spacing: 1px;
+    line-height: 1rem;
+}
+
 /* TABLET RESPONSIVE */
 @media (max-width: 1024px) {
   h1, .h1 {
